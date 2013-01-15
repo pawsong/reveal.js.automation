@@ -7,9 +7,9 @@ The only things you should change are
 
 Commands :
 
-./gradlew deploy : Deploy to remote server
-./gradlew undeploy : Undeploy from remote server
-./gradlew show : Start presentation on local server
+- ./gradlew deploy : Deploy to remote server
+- ./gradlew undeploy : Undeploy from remote server
+- ./gradlew show : Start presentation on local server
 
 For further information, refer to :
 - [rvl.io](http://www.rvl.io/): Awesome reveal editor
