@@ -6,7 +6,6 @@ repositories {
 	mavenCentral()
 }
 
-
 /* Cargo Settings */
 buildscript {
     repositories {
@@ -20,7 +19,6 @@ buildscript {
 apply plugin: 'jetty'
 apply plugin: 'cargo'
 
-
 dependencies {
     // Cargo deployment
     def cargoVersion = '1.3.1'
@@ -30,32 +28,11 @@ dependencies {
 
 // Setting deployment info.
 // User's name and password for tomcat.
-def givenUsername = "mock"
-def givenPassword = "mock"
+def givenUsername = TOMCAT_USERNAME
+def givenPassword = TOMCAT_PASSWORD
 
 // presentation name.
-def presentationName = "mock"
-
-gradle.startParameter.taskNames.each() { taskName ->
-	if(taskName.contains("cargoRedeployRemote") ||
-			taskName.contains("cargoDeployRemote") ||
-			taskName.contains("cargoUndeployRemote") ||
-			taskName.contains("deploy") ||
-			taskName.contains("undeploy")) {
-		// Get deployment information via console
-		def console = System.console()
-		if (console) {
-			// Get identification info.
-			givenUsername = console.readLine('\n> Please enter tomcat username: ')
-			givenPassword = console.readPassword('\n> Please enter tomcat password: ').toString()
-			
-			presentationName = console.readLine('\n> Please enter presentation name: ')
-		} else {
-			logger.error "Cannot get console."
-		}
-	}
-}
-
+def presentationName = TOMCAT_PRESENTATION_NAME
 
 cargo {
     containerId = 'tomcat7x'
@@ -70,8 +47,6 @@ cargo {
         username = givenUsername
         password = givenPassword
     }
-
-
 }
 
 // Let developer know target url
@@ -108,6 +83,7 @@ cargoUndeployRemote.doLast {
     println "******************************************************"
     println ""
 }
+
 // Make war before deployment
 cargoDeployRemote.dependsOn war
 cargoRedeployRemote.dependsOn war
@@ -123,25 +99,4 @@ task undeploy(dependsOn: cargoUndeployRemote) {
     group = easyCommands
     description = 'Undeploy app on remote server'
 }
-
-task show(dependsOn: jettyRunWar) {
-    group = easyCommands
-    description = 'Show presentation'
-}
-
-/* Build index.html */
-task('buildIndex') << { 
-	def head = new File("src/main/webapp/templates/head.html")
-	def tail = new File("src/main/webapp/templates/tail.html")
-
-	def main = new File("main.html")
-
-	def output = new File("src/main/webapp/index.html")
-
-	if(output.exists())
-		output.delete()
-		
-	output.write("${head.text}\n${main.text}\n${tail.text}","UTF-8")
-}
-
-war.dependsOn buildIndex
+war.from 'dist'
