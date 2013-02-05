@@ -2,6 +2,9 @@
 .svn
 .sass-cache
 
+# private information
+gradle.properties
+
 # gradle temporary files
 build/**
 .gradle/**
