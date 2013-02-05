@@ -12,7 +12,8 @@ This project intends to improve reveal.js edit and deploy experience.
 3. `npm install`
 
 ## Commands
-- `grunt dev` - will watch for file changes in `src` directory and reload on the browser
+- `grunt` - will create `dist` directory and build presentation.
+- `grunt dev` - will execute `grunt`, watch for file changes in `src` directory and reload presentation on the browser on each change
 - `grunt deploy` - will deploy presentation to tomcat7 container
 - `grunt undeploy` - will undeploy presentation from the container
 
