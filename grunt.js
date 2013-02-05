@@ -5,6 +5,14 @@ module.exports = function (grunt) {
 
 	// project configuration
 	grunt.initConfig({
+		clean: {
+			all: {
+				src: ["dist"]
+			},
+			resources: {
+				src: ["dist/resources"]
+			}
+		},
 		// Build index.html
 		concat: {
 		    dist: {
@@ -43,7 +51,7 @@ module.exports = function (grunt) {
 		},
 		watch:{
 			files:['./src/**'],
-			tasks:['concat', 'copy:resources', 'reload']
+			tasks:['clean:resources', 'concat', 'copy:resources', 'reload']
 		}
 	});
 
@@ -66,6 +74,6 @@ module.exports = function (grunt) {
 	});
 	
 	// build index.html file.
-	grunt.registerTask('default', ['concat', 'copy']);
+	grunt.registerTask('default', ['clean:all', 'concat', 'copy']);
 	grunt.registerTask('dev', ['default', 'server', 'reload', 'reload-noti', 'watch']);
 }
