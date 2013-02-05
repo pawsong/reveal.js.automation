@@ -1,5 +1,8 @@
 // Build configurations.
 module.exports = function (grunt) {
+	var reloadPort = 8080;
+	var serverPort = 3000;
+
 	// project configuration
 	grunt.initConfig({
 		// Build index.html
@@ -26,16 +29,16 @@ module.exports = function (grunt) {
 		
 		// Run static server
 		server: {
-			port: 3000,
+			port: serverPort,
 			base: './dist'
 		},
 		
 		// Live reloading
 		reload: {
-			port: 8080,
+			port: reloadPort,
 			proxy: {
 				host: 'localhost',
-				port: 3000
+				port: serverPort
 			}
 		},
 		watch:{
@@ -57,8 +60,12 @@ module.exports = function (grunt) {
 	grunt.registerTask('undeploy', "undeploy", function() {
 	  shell.exec('gradlew undeploy');
 	});
-
+	
+	grunt.registerTask('reload-noti', 'reload-noti', function() {
+		grunt.log.subhead("Reload server successfully started! Connect the server at :\n     http://localhost:" + reloadPort);
+	});
+	
 	// build index.html file.
 	grunt.registerTask('default', ['concat', 'copy']);
-	grunt.registerTask('dev', ['default', 'server', 'reload', 'watch']);
+	grunt.registerTask('dev', ['default', 'server', 'reload', 'reload-noti', 'watch']);
 }
