@@ -1,0 +1,19 @@
+{
+	"name": "Reveal.js.automation",
+	"version": "0.1.0",
+	"author": {
+		"name": "Seungguen Song",
+		"email": "gifarangw@gmail.com"
+	},
+	"description": "Reveal.js automation",
+	"dependencies": {
+		"node-static": "latest",
+		"shelljs": "latest",
+		"grunt-contrib": "latest"
+	},
+	"devDependencies": {
+		"grunt": "latest",
+		"grunt-reload": "latest"
+	},
+	"engine": "node >= 0.8.1"
+}

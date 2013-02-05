@@ -1,9 +1,12 @@
 .DS_Store
 .svn
 .sass-cache
-src/main/webapp/log/*.log
-src/main/webapp/tmp/**
-src/main/webapp/node_modules/
-src/main/webapp/index.html
+
+# gradle temporary files
 build/**
 .gradle/**
+
+# node.js temporary files
+dist/
+node_modules/
+npm-debug.log

@@ -7,9 +7,10 @@ The only things you should change are
 
 Commands :
 
-- ./gradlew deploy : Deploy to remote server
-- ./gradlew undeploy : Undeploy from remote server
-- ./gradlew show : Start presentation on local server
+- grunt deploy : Deploy to remote server
+- grunt undeploy : Undeploy from remote server
+- grunt dev : Start presentation on local server.
+This will automatically reload changes.
 
 For further information, refer to :
 - [rvl.io](http://www.rvl.io/): Awesome reveal editor
