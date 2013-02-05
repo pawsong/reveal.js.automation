@@ -23,6 +23,15 @@ Server configurations are  in `gradle.properties` file.
 ### 2. Edit slide content
 Replace `src/main.html` with rvl.io 'export' output.
 
+All the user's custom resources are to be placed in `src/resources` directory.
+Files in `src/resources` directory will be placed under `resources` relative path on server.
+
+For example, below html tag accesses `meny.png` in `resources` directory:
+
+```html
+<img width="320" height="299" src="resources/meny.png" alt="Meny">
+```
+
 ## Reference
 - [rvl.io](http://www.rvl.io/): Awesome reveal editor
 - [reveal.js](https://github.com/hakimel/reveal.js/): Brilliant presentation framework
