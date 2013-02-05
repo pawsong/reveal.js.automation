@@ -2,7 +2,7 @@
 
 This project intends to improve reveal.js edit and deploy experience.
 
-## Prerrequisite
+## Prerequisites
 - Node.js
 - Grunt : `npm install -g grunt`
 
