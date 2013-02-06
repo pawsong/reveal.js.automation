@@ -1,6 +1,6 @@
 // Build configurations.
 module.exports = function (grunt) {
-	var reloadPort = 8080;
+	var reloadPort = 3001;
 	var serverPort = 3000;
 
 	// project configuration
@@ -50,8 +50,14 @@ module.exports = function (grunt) {
 			}
 		},
 		watch:{
-			files:['./src/**'],
-			tasks:['clean:resources', 'concat', 'copy:resources', 'reload']
+			main: {
+				files:['./src/main.html'],
+				tasks:['concat', 'reload']
+			},
+			resources: {
+				files:['./src/**'],
+				tasks:['clean:resources', 'copy:resources', 'reload']
+			}
 		}
 	});
 
