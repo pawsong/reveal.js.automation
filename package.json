@@ -7,12 +7,12 @@
 	},
 	"description": "Reveal.js automation",
 	"dependencies": {
-		"shelljs": "latest",
-		"grunt-contrib": "latest"
+		"shelljs": "0.1.2",
+		"grunt-contrib": "0.3.0"
 	},
 	"devDependencies": {
-		"grunt": "latest",
-		"grunt-reload": "latest"
+		"grunt": "0.3.17",
+		"grunt-reload": "0.2.0"
 	},
 	"engine": "node >= 0.8.1"
 }
