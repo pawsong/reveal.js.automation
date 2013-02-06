@@ -59,14 +59,27 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib');
 	
 	var shell = require('shelljs');
+	var isWin = !!process.platform.match(/^win/),
+	isMac = !!process.platform.match(/^darwin/),
+	isLinux = !!process.platform.match(/^linux/);
 	
 	// Gradle tasks : Deploy
 	grunt.registerTask('deploy', "deploy", function() {
-	  shell.exec('gradlew deploy');
+		if(isWin) shell.exec('gradlew deploy --stacktrace');
+		else if(isMac || isLinux) { 
+			shell.exec('chmod u+x gradlew');
+			shell.exec('./gradlew deploy --stacktrace');
+		}
+		else grunt.log.error("Deploy failed. Not supported OS.");
 	});
 	// Gradle tasks : Undeploy
 	grunt.registerTask('undeploy', "undeploy", function() {
-	  shell.exec('gradlew undeploy');
+		if(isWin) shell.exec('gradlew undeploy --stacktrace');
+		else if(isMac || isLinux) { 
+			shell.exec('chmod u+x gradlew');
+			shell.exec('./gradlew undeploy --stacktrace');
+		}
+		else grunt.log.error("Undeploy failed. Not supported OS.");
 	});
 	
 	grunt.registerTask('reload-noti', 'reload-noti', function() {
