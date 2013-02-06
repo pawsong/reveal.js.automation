@@ -7,7 +7,6 @@
 	},
 	"description": "Reveal.js automation",
 	"dependencies": {
-		"node-static": "latest",
 		"shelljs": "latest",
 		"grunt-contrib": "latest"
 	},
