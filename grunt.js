@@ -67,7 +67,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('deploy', "deploy", function() {
 		if(isWin) shell.exec('gradlew deploy --stacktrace');
 		else if(isMac || isLinux) { 
-			shell.exec('chmod u+x gradlew');
 			shell.exec('./gradlew deploy --stacktrace');
 		}
 		else grunt.log.error("Deploy failed. Not supported OS.");
@@ -76,7 +75,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('undeploy', "undeploy", function() {
 		if(isWin) shell.exec('gradlew undeploy --stacktrace');
 		else if(isMac || isLinux) { 
-			shell.exec('chmod u+x gradlew');
 			shell.exec('./gradlew undeploy --stacktrace');
 		}
 		else grunt.log.error("Undeploy failed. Not supported OS.");
